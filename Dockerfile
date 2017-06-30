@@ -1,4 +1,4 @@
-FROM pritunl/archlinux:2017-05-13
+FROM pritunl/archlinux:2017-06-17
 RUN pacman -Syu --noconfirm
 RUN pacman -Sy --noconfirm sudo base-devel gettext cmake git clang clang-tools-extra ninja boost libsodium
 RUN echo "nobody ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
