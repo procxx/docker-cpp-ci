@@ -1,9 +1,18 @@
 FROM pritunl/archlinux:2017-06-17
+
 RUN pacman -Syu --noconfirm
-RUN pacman -Sy --noconfirm sudo base-devel gettext cmake git clang clang-tools-extra ninja boost libsodium
+RUN pacman -Sy --noconfirm sudo base-devel gettext cmake git ninja boost libsodium wget
 RUN echo "nobody ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 RUN pacman -Sy ccache --noconfirm
 RUN (echo "y"; echo "y") | pacman -Scc
+
+RUN mkdir /build
+RUN cd /build
+RUN wget https://raw.githubusercontent.com/berkus/llvm-build/master/build_toolchain.sh
+RUN sh build_toolchain.sh
+
+# Put Clang ahead in the PATH search
+ENV PATH="/usr/local/opt/llvm:${PATH}"
 
 # Location where travis config stored
 ENV TRAVIS_CONFIG_PATH /travis
