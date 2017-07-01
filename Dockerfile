@@ -1,7 +1,7 @@
 FROM pritunl/archlinux:2017-06-17
 
 RUN pacman -Syu --noconfirm
-RUN pacman -Sy --noconfirm sudo base-devel gettext cmake git ninja boost libsodium wget
+RUN pacman -Sy --noconfirm sudo base-devel gettext cmake git ninja boost libsodium wget python
 RUN echo "nobody ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 RUN pacman -Sy ccache --noconfirm
 RUN (echo "y"; echo "y") | pacman -Scc
