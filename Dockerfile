@@ -1,7 +1,8 @@
 FROM pritunl/archlinux:2017-12-23
 
 RUN pacman -Syu --noconfirm
-RUN pacman -Sy --noconfirm sudo base-devel gettext cmake git ninja boost libsodium wget python openssl qt5-base qt5-imageformats qt5-xcb-private-headers openal ffmpeg opus zlib clang clang-tools-extra
+RUN pacman -Sy --noconfirm sudo base-devel gettext cmake git ninja boost libsodium wget python openssl qt5-base qt5-imageformats qt5-xcb-private-headers openal ffmpeg opus zlib clang clang-tools-extra python-pip
+RUN pip install conan
 RUN echo "nobody ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 RUN pacman -Sy ccache --noconfirm
 RUN (echo "y"; echo "y") | pacman -Scc
