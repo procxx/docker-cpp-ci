@@ -1,4 +1,4 @@
-FROM pritunl/archlinux:2018-06-02
+FROM base/archlinux:latest
 
 RUN pacman -Syu --noconfirm
 RUN pacman -Sy --noconfirm sudo base-devel gettext cmake git ninja boost libsodium wget python openssl qt5-base qt5-imageformats qt5-xcb-private-headers openal ffmpeg opus zlib clang python-pip
